@@ -23,6 +23,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 # The main route, which is the To Do list
 @app.route("/")
 def index():
+    print("We got to the index page!")
     # Checks if the user is logged in 
     if "username" not in session:
         return redirect("/login")
@@ -41,7 +42,7 @@ def login():
     if request.method == "POST":
         # TODO: Check username and password
         #If valid and email confirmed
-        session["username"] = "username" # Replace with real username
+        session["username"] = "username"
         return render_template("index.html")
         # If invalid (also send some sort of "resend link" message if email not confirmed
         return render_template("login.html", warning = "Invalid username or password")
