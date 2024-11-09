@@ -40,11 +40,12 @@ def login():
         # Check username doesn't already exist
         # Check password is long enough
         # Check passoword and conformation are right
-        # Sends an email confirmation message. 
+        # Sends an email confirmation message formatted with HTML
         message = MIMEMultipart("alternative")
         message["Subject"] = "Calender - Password Confirmation"
         message["From"] = # Some sort of email address for our website
-        message["To"] = request.form(email) # Something like this
+        message["To"] = request.form(email)
+        
         return render_template("login.html") # Some sort of success message
 
 # The route for the weekly calender
