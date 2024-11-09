@@ -1,9 +1,24 @@
 from flask import Flask, render_template, session, request, redirect
 import smtplib, ssl
 from email.mime.text import MIMEText
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 from email.mime.multipart import MIMEMultipart
 
 app = Flask(__name__)
+
+# Configs database
+PASSWORD ="Hello123"
+PUBLIC_IP_ADDRESS = "34.71.116.70"
+DBNAME = "trial"
+PROJECT_ID = "Hack-K-State"
+INSTANCE_NAME = "teamrocks"
+ 
+app.config["SECRET_KEY"] = "yoursecretkey"
+app.config["SQLALCHEMY_DATABASE_URI"]= f"mysql + mysqldb://root:{PASSWORD}@{PUBLIC_IP_ADDRESS}/{DBNAME}?unix_socket =/cloudsql/{PROJECT_ID}:{INSTANCE_NAME}"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"]= True
+ 
+db = SQLAlchemy(app)
 
 # The main route, which is the To Do list
 @app.route("/")
