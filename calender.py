@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, request
+from flask import Flask, render_template, session, request, redirect
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -43,7 +43,7 @@ def new_user():
         # Sends an email confirmation message formatted with HTML
         message = MIMEMultipart("alternative")
         message["Subject"] = "Calender - Password Confirmation"
-        message["From"] = # Some sort of email address for our website
+        message["From"] = "Some email address" # Some sort of email address for our website
         message["To"] = request.form(email)
         # Alternate text in case the HTML won't go through
         text = """\Here is your email confirmation link - link."""
