@@ -35,11 +35,9 @@ def login():
         # Check username doesn't already exist
         # Check password is long enough
         # Check passoword and conformation are right
+        return render_template(".html") # Some sort of success message
         # Email confirmation send
-        session["username"] = "username" # Replace with real username
-        return render_template("index.html")
-        # If invalid
-        return render_template("login.html", warning = "Invalid username or password")
+        return render_template("login.html") # Some sort of success message
 
 @app.route("/calander")
 def index():
