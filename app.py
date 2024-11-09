@@ -30,12 +30,8 @@ def index():
         # TODO: Query database, send info to todo page
         return render_template("index.html")
     if request.method == "POST":
-        username = request.form.get("username")
-        password = request.form.get("password")
-        if username and password:
-            return render_template("index.html")
-        else:
-            return render_template("login.html")
+        # Something
+        return 404
     
 # The login page route
 @app.route("/login", methods=["GET", "POST"])
