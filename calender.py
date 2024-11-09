@@ -66,8 +66,8 @@ def new_user():
         
         # Sends email over secure connection
         with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=ssl.create_default_context()) as server:
-            server.login(#Our email, #The password)
-            server.sendmail(#Our email, message.email, message.as_string())
+            server.login()#Our email, #The password)
+            server.sendmail()#Our email, message.email, message.as_string())
                 
         return render_template("login.html") # Some sort of success message
 
