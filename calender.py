@@ -21,10 +21,10 @@ def login():
         return render_template("login.html")
     if request.method == "POST":
         # Check username and password
-        # If valid
+        # If valid and email confirmed
         session["username"] = "username" # Replace with real username
         return render_template("index.html")
-        # If invalid
+        # If invalid (also send some sort of "resend link" message if email not confirmed
         return render_template("login.html", warning = "Invalid username or password")
 
 @app.route("/new-user", methods=["GET", "POST"])
@@ -35,7 +35,6 @@ def login():
         # Check username doesn't already exist
         # Check password is long enough
         # Check passoword and conformation are right
-        return render_template(".html") # Some sort of success message
         # Email confirmation send
         return render_template("login.html") # Some sort of success message
 
