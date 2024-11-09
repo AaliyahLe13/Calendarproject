@@ -44,7 +44,7 @@ def new_user():
         message = MIMEMultipart("alternative")
         message["Subject"] = "Calender - Password Confirmation"
         message["From"] = "Some email address" # Some sort of email address for our website
-        message["To"] = request.form(email)
+        message["To"] = request.form("email")
         # Alternate text in case the HTML won't go through
         text = """\Here is your email confirmation link - link."""
         # HTML email content
