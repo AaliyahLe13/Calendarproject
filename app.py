@@ -32,7 +32,12 @@ def index():
         return render_template("index.html")
     if request.method == "POST":
         # TODO: Add new item to database if provided
-        return render_template("index.html") # Probably will send some sort of "complete!" message
+        username = request.form.get("username")
+        password = request.form.get("password")
+        if username and password:
+            return render_template("index.html") # Probably will send some sort of "complete!" message
+        else:
+            return render_template("login.html")
     
 # The login page route
 @app.route("/login", methods=["GET", "POST"])
