@@ -5,6 +5,7 @@ from email.mime.multipart import MIMEMultipart
 
 app = Flask(__name__)
 
+# The main route, which is the To Do list
 @app.route("/")
 def index():
     # Some sort of thing that sends you to the login route if you 
@@ -17,7 +18,7 @@ def index():
         # Something that adds an item to the database
         return render_template("todo.html") # Probably will send some sort of "complete!" message
     
-
+# The login page route
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "GET":
@@ -30,6 +31,7 @@ def login():
         # If invalid (also send some sort of "resend link" message if email not confirmed
         return render_template("login.html", warning = "Invalid username or password")
 
+# The route for creating a new user
 @app.route("/new-user", methods=["GET", "POST"])
 def login():
     if request.method == "GET":
@@ -45,6 +47,7 @@ def login():
         message["To"] = request.form(email) # Something like this
         return render_template("login.html") # Some sort of success message
 
+# The route for the weekly calender
 @app.route("/calander")
 def index():
     # Some sort of thing that sends you to the login route if you
