@@ -1,5 +1,7 @@
 from flask import Flask, render_template, session, request
 import smtplib, ssl
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 app = Flask(__name__)
 
