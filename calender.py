@@ -7,7 +7,8 @@ def index():
     # Some sort of thing that sends you to the login route if you 
     if not session["username"]:
         #Something that sends you to the login page
-    return render_template("index.html")
+    # Something that gets information from database and sends it to the calendar
+    return render_template("todo.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -20,3 +21,11 @@ def login():
         return render_template("index.html")
         # If invalid
         return render_template("login.html", warning = "Invalid username or password")
+
+@app.route("/calander")
+def index():
+    # Some sort of thing that sends you to the login route if you 
+    if not session["username"]:
+        #Something that sends you to the login page
+    # Some sort of thing that sends you to week view
+    return render_template("calendar.html")
