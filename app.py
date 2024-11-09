@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, request, redirect
+from flask import Flask, render_template, session, request, redirect, flash
 import smtplib, ssl
 from email.mime.text import MIMEText
 from flask import Flask
@@ -48,7 +48,8 @@ def login():
             session["username"] = username
             return render_template("index.html")
         else:
-            return render_template("login.html", warning = "Invalid username or password")
+            flash("Invalid username or password")
+            return render_template("login.html")
 
 # The route for creating a new user
 @app.route("/new-user", methods=["GET", "POST"])

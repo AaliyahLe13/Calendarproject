@@ -11,16 +11,21 @@
 </head>
 
 <body> 
+    {% with message = get_flashed_messages() %}
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+    {% endwith %}
     <div class="wrapper">
         <form action="/login" method="Post">
             <h1>Login</h1>
             <div class="input-box">
-                <input name="usename" type="text" placeholder="Username"required>
+                <input name="usename" type="text" placeholder="Username">
                 <i class='bx bx-user'></i>
             </div>
             <div class="input-box">
                 <input type="password" name="password"
-                placeholder="Password" required>
+                placeholder="Password">
                 <i class='bx bxs-lock' ></i>
             </div>
 
