@@ -8,9 +8,9 @@ app = Flask(__name__)
 # The main route, which is the To Do list
 @app.route("/")
 def index():
-    # Some sort of thing that sends you to the login route if you 
+    # Checks if the user is logged in 
     if not session["username"]:
-        #Something that sends you to the login page
+        return redirect("/login")
     if request.method == "GET":
         # Something that gets information from database and sends it to the calendar
         return render_template("index.html")
@@ -33,7 +33,7 @@ def login():
 
 # The route for creating a new user
 @app.route("/new-user", methods=["GET", "POST"])
-def login():
+def new_user():
     if request.method == "GET":
         return render_template("new-user.html")
     if request.method == "POST":
@@ -73,10 +73,20 @@ def login():
 
 # The route for the weekly calender
 @app.route("/calander")
-def index():
-    # Some sort of thing that sends you to the login route if you
+def calendar():
+    # Redirects you to the login if you are not logged in 
     if not session["username"]:
-        #Something that sends you to the login page
+        return redirect("/login")        
+    else:
+    # Some sort of thing that sends you to week view
+        return render_template("calendar.html")
+
+# The route for if the user is logging out
+@app.route("/logout")
+def logout():
+    # Redirects you to the login if you are not logged in 
+    if not session["username"]:
+        return redirect("/login")        
     else:
     # Some sort of thing that sends you to week view
         return render_template("calendar.html")
