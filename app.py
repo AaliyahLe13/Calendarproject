@@ -35,7 +35,7 @@ def index():
         username = request.form.get("username")
         password = request.form.get("password")
         if username and password:
-            return render_template("index.html") # Probably will send some sort of "complete!" message
+            return render_template("calendar.html") # Probably will send some sort of "complete!" message
         else:
             return render_template("login.html")
     
