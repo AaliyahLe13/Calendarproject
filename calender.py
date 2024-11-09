@@ -39,6 +39,10 @@ def login():
         # Check password is long enough
         # Check passoword and conformation are right
         # Email confirmation send
+        message = MIMEMultipart("alternative")
+        message["Subject"] = "Calender - Password Confirmation"
+        message["From"] = # Some sort of email address for our website
+        message["To"] = request.form(email) # Something like this
         return render_template("login.html") # Some sort of success message
 
 @app.route("/calander")
