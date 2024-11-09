@@ -58,6 +58,17 @@ def login():
           </body>
         </html>
         """
+        plaintext = MIMEText(text, "plain")
+        html = MIMEText(html, "html")
+        # Adds message to email message that will be sent. Will try to render HTML first, then plaintext if unsuccessful
+        message.attach(plaintext)
+        message.attach(html)
+        
+        # Sends email over secure connection
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=ssl.create_default_context()) as server:
+            server.login(#Our email, #The password)
+            server.sendmail(#Our email, message.email, message.as_string())
+                
         return render_template("login.html") # Some sort of success message
 
 # The route for the weekly calender
