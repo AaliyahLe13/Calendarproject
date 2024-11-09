@@ -45,7 +45,19 @@ def login():
         message["Subject"] = "Calender - Password Confirmation"
         message["From"] = # Some sort of email address for our website
         message["To"] = request.form(email)
-        
+        # Alternate text in case the HTML won't go through
+        text = """\Here is your email confirmation link - link."""
+        # HTML email content
+        html = """\
+        <html>
+          <body>
+            <p>Hi,<br>
+               Here's your email confirmation link<br>
+               <a href="#">Confirm email</a> 
+            </p>
+          </body>
+        </html>
+        """
         return render_template("login.html") # Some sort of success message
 
 # The route for the weekly calender
