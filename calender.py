@@ -4,7 +4,9 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    session['email'] = request.form['email_address']
+    # Some sort of thing that sends you to the login route if you 
+    if not session["username"]:
+        #Something that sends you to the login page
     return render_template("index.html")
 
 @app.route("/login", methods=["GET", "POST"])
