@@ -13,10 +13,10 @@ def index():
         #Something that sends you to the login page
     if request.method == "GET":
         # Something that gets information from database and sends it to the calendar
-        return render_template("todo.html")
+        return render_template("index.html")
     if request.method == "POST":
         # Something that adds an item to the database
-        return render_template("todo.html") # Probably will send some sort of "complete!" message
+        return render_template("index.html") # Probably will send some sort of "complete!" message
     
 # The login page route
 @app.route("/login", methods=["GET", "POST"])
