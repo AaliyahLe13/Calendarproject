@@ -10,11 +10,11 @@ app = Flask(__name__)
 # Configs database
 PASSWORD ="Hello123"
 PUBLIC_IP_ADDRESS = "34.71.116.70"
-DBNAME = "trial"
+DBNAME = "trial.db"
 PROJECT_ID = "Hack-K-State"
 INSTANCE_NAME = "teamrocks"
  
-app.config["SECRET_KEY"] = "yoursecretkey"
+app.config["SECRET_KEY"] = "55455"
 app.config["SQLALCHEMY_DATABASE_URI"]= f"mysql + mysqldb://root:{PASSWORD}@{PUBLIC_IP_ADDRESS}/{DBNAME}?unix_socket =/cloudsql/{PROJECT_ID}:{INSTANCE_NAME}"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"]= True
  
