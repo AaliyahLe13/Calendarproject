@@ -24,8 +24,8 @@ def login():
     if request.method == "GET":
         return render_template("login.html")
     if request.method == "POST":
-        # Check username and password
-        # If valid and email confirmed
+        # TODO: Check username and password
+        #If valid and email confirmed
         session["username"] = "username" # Replace with real username
         return render_template("index.html")
         # If invalid (also send some sort of "resend link" message if email not confirmed
