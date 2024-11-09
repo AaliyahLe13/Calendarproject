@@ -7,9 +7,14 @@ def index():
     # Some sort of thing that sends you to the login route if you 
     if not session["username"]:
         #Something that sends you to the login page
-    else:
+        
+    if request.method == "GET":
         # Something that gets information from database and sends it to the calendar
         return render_template("todo.html")
+    if request.method == "POST":
+        # Something that adds an item to the database
+        return render_template("todo.html") # Probably will send some sort of "complete!" message
+    
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
