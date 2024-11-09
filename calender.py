@@ -40,7 +40,7 @@ def login():
         # Check username doesn't already exist
         # Check password is long enough
         # Check passoword and conformation are right
-        # Email confirmation send
+        # Sends an email confirmation message. 
         message = MIMEMultipart("alternative")
         message["Subject"] = "Calender - Password Confirmation"
         message["From"] = # Some sort of email address for our website
