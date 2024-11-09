@@ -84,9 +84,6 @@ def calendar():
 # The route for if the user is logging out
 @app.route("/logout")
 def logout():
-    # Redirects you to the login if you are not logged in 
-    if not session["username"]:
-        return redirect("/login")        
-    else:
-    # Some sort of thing that sends you to week view
-        return render_template("calendar.html")
+    # Clears the session and redirects you to the login
+    session.clear()
+    return redirect("/login")
