@@ -12,10 +12,10 @@ def index():
     if not session["username"]:
         return redirect("/login")
     if request.method == "GET":
-        # Something that gets information from database and sends it to the calendar
+        # TODO: Query database, send info to todo page
         return render_template("index.html")
     if request.method == "POST":
-        # Something that adds an item to the database
+        # TODO: Add new item to database if provided
         return render_template("index.html") # Probably will send some sort of "complete!" message
     
 # The login page route
