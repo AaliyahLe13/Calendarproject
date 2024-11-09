@@ -7,24 +7,24 @@ from email.mime.multipart import MIMEMultipart
 
 app = Flask(__name__)
 
-# Configs database
+
+#Configs database
 PASSWORD ="Hello123"
 PUBLIC_IP_ADDRESS = "34.71.116.70"
 DBNAME = "trial.db"
 PROJECT_ID = "Hack-K-State"
 INSTANCE_NAME = "teamrocks"
+app.config["SECRET_KEY"] = ""
+app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql+mysqldb://root:{PASSWORD}@{PUBLIC_IP_ADDRESS}/{DBNAME}?unix_socket=/cloudsql/{PROJECT_ID}:{INSTANCE_NAME}"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
  
-app.config["SECRET_KEY"] = "55455"
-app.config["SQLALCHEMY_DATABASE_URI"]= f"mysql + mysqldb://root:{PASSWORD}@{PUBLIC_IP_ADDRESS}/{DBNAME}?unix_socket =/cloudsql/{PROJECT_ID}:{INSTANCE_NAME}"
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"]= True
- 
-db = SQLAlchemy(app)
+#db = SQLAlchemy(app)
 
 # The main route, which is the To Do list
 @app.route("/")
 def index():
     # Checks if the user is logged in 
-    if not session["username"]:
+    if "username" not in session:
         return redirect("/login")
     if request.method == "GET":
         # TODO: Query database, send info to todo page
@@ -90,7 +90,7 @@ def new_user():
 @app.route("/calander")
 def calendar():
     # Redirects you to the login if you are not logged in 
-    if not session["username"]:
+    if "username" not in session:
         return redirect("/login")        
     else:
     # Some sort of thing that sends you to week view
@@ -103,6 +103,6 @@ def logout():
     session.clear()
     return redirect("/login")
 
-@app.errorhandler(404)
-def not_found(e):
+#@app.errorhandler(404)
+#def not_found(e):
     return render_template('404.html'), 404
