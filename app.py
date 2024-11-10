@@ -54,15 +54,20 @@ def new_user():
     if request.method == "GET":
         return render_template("register.html")
     if request.method == "POST":
+        user = request.form.get("usename")
+        email = request.form.get("email")
         password = request.form.get("password")
         confirmation = request.form.get("password")
+        print("We are here")
         # Check username doesn't already exist
         # Check password is long enough
+        if not user or not email or not password or not confirmation:
+            return render_template("register.html", warning = "Please fill out all fields.")
         if len(password) < 9:
-            return render_template("login.html", warning = "Password must be 8 characters long.")
+            return render_template("register.html", warning = "Password must be 8 characters long.")
          # Check password and conformation are right
         if password != confirmation:
-            return render_template("login.html", warning = "Password and confirmation do not match.")
+            return render_template("register.html", warning = "Password and confirmation do not match.")
         # Sends an email confirmation message formatted with HTML
         message = MIMEMultipart("alternative")
         message["Subject"] = "Calender - Password Confirmation"
