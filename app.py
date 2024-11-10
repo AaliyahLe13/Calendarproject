@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, request, redirect, flash
+from flask import Flask, render_template, session, request, redirect
 import smtplib, ssl
 from email.mime.text import MIMEText
 from flask import Flask
@@ -6,8 +6,6 @@ from flask_sqlalchemy import SQLAlchemy
 from email.mime.multipart import MIMEMultipart
 
 app = Flask(__name__)
-
-app.secret_key = "55000348979807808087898"
 
 #Configs database
 PASSWORD ="Hello123"
@@ -49,8 +47,7 @@ def login():
             session["username"] = username
             return render_template("index.html")
         else:
-            flash("Invalid username or password")
-            return render_template("login.html")
+            return render_template("login.html", warning = "Invalid username or password")
 
 # The route for creating a new user
 @app.route("/new-user", methods=["GET", "POST"])
