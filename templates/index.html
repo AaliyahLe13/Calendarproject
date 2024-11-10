@@ -1,20 +1,53 @@
 <!DOCTYPE html>
-    <html>
-        <head>
-            <title>
-                HomePage
-            </title>
-        </head>
-        <body>
-            <hr><hr/>
-            <h1>Hello World!</h1>
-            <p>This is a sample</p>
-            <hr><hr/>
-            <ol>
-                <li>Item 1</li>0
-                <li>Item 2</li>
-                <li>Item 3</li>
-            </ol>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Calendar and To-Do List</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-        </body>
-    </html>
+  <header>
+    <nav>
+      <div class="nav__logo"><a href="#">Best Calendar Ever</a></div>
+      <ul class="nav__links">
+        <li class="link">Calendar</li>
+        <li class="link">To-Do</li>
+        <li class="link">Instructions</li>
+        <li class="link">Support</li>
+      </ul>
+      <div class="toggle__btn"><i class="ri-menu-line"></i></div>
+    </nav>
+    <div class="hero">
+      <h2>HELLO!</h2>
+      <h1>Welcome To Your New Calendar</h1>
+      <button>To-Do</button>
+    </div>
+  </header>
+
+  <section class="container">
+    <h1>Your To-Do List</h1>
+    <div class="input-container">
+      <input class="todo-input" type="text" placeholder="Add a new task">
+      <button class="add-button">+</button>
+    </div>
+
+    <div class="filters">
+      <div class="filter" data-filter="completed">Complete</div>
+      <div class="filter" data-filter="pending">Incomplete</div>
+      <div class="delete-all">Delete All</div>
+    </div>
+    
+    <div class="todos-container">
+      <ul class="todos"></ul>
+      <img class="empty-image" src="./empty.svg" alt="No Tasks">
+    </div>
+  </section>
+
+  <script src="./script.js"></script>
+</body>
+</html>
