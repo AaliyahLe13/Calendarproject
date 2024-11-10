@@ -47,7 +47,7 @@ def login():
             session["username"] = username
             return render_template("index.html")
         else:
-            return render_template("login.html", warning = "Invalid username or password")
+            return render_template("login.html", warning = "Please provide a username and password")
 
 # The route for creating a new user
 @app.route("/new-user", methods=["GET", "POST"])
