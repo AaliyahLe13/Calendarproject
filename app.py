@@ -27,7 +27,7 @@ def index():
         return redirect("/login")
     if request.method == "GET":
         # TODO: Query database, send info to todo page
-        return render_template("calendar.html")
+        return render_template("index.html", name = session["username"])
     if request.method == "POST":
         # Something
         return 404
@@ -54,45 +54,51 @@ def new_user():
     if request.method == "GET":
         return render_template("register.html")
     if request.method == "POST":
+        user = request.form.get("usename")
+        email = request.form.get("email")
         password = request.form.get("password")
-        confirmation = request.form.get("password")
+        confirmation = request.form.get("confirmation")
+        print(password)
+        print(confirmation)
         # Check username doesn't already exist
         # Check password is long enough
-        if len(password) < 9:
-            return render_template("login.html", warning = "Password must be 8 characters long.")
+        if not user or not email or not password or not confirmation:
+            return render_template("register.html", warning = "Please fill out all fields.")
+        elif len(password) < 9:
+            return render_template("register.html", warning = "Password must be 8 characters long.")
          # Check password and conformation are right
-        if password != confirmation:
-            return render_template("login.html", warning = "Password and confirmation do not match.")
+        elif not (password == confirmation):
+            return render_template("register.html", warning = "Password and confirmation do not match.")
         # Sends an email confirmation message formatted with HTML
-        message = MIMEMultipart("alternative")
-        message["Subject"] = "Calender - Password Confirmation"
-        message["From"] = "Some email address" # Some sort of email address for our website - make google account
-        message["To"] = request.form("email")
+       # message = MIMEMultipart("alternative")
+        #message["Subject"] = "Calender - Password Confirmation"
+        #message["From"] = "Some email address" # Some sort of email address for our website - make google account
+       # message["To"] = request.form("email")
         # Alternate text in case the HTML won't go through
-        text = """\\Here is your email confirmation link - link."""
+        #text = """\\Here is your email confirmation link - link."""
         # HTML email content
-        html = """\\
-        <html>
-          <body>
-            <p>Hi,<br>
-               Here's your email confirmation link<br>
-               <a href="#">Confirm email</a> 
-            </p>
-          </body>
-        </html>
-        """
-        plaintext = MIMEText(text, "plain")
-        html = MIMEText(html, "html")
+        #html = """\\
+        #<html>
+         # <body>
+          #  <p>Hi,<br>
+           #    Here's your email confirmation link<br>
+            #   <a href="#">Confirm email</a> 
+          #  </p>
+         # </body>
+       # </html>
+       # """
+       # plaintext = MIMEText(text, "plain")
+       # html = MIMEText(html, "html")
         # Adds message to email message that will be sent. Will try to render HTML first, then plaintext if unsuccessful
-        message.attach(plaintext)
-        message.attach(html)
+       # message.attach(plaintext)
+       # message.attach(html)
         
         # Sends email over secure connection
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=ssl.create_default_context()) as server:
-            server.login()#Our email, #The password)
-            server.sendmail()#Our email, message.email, message.as_string())
-                
-        return render_template("login.html", success="Thanks for registering!")
+        #with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=ssl.create_default_context()) as server:
+       #     server.login()#Our email, #The password)
+         #   server.sendmail()#Our email, message.email, message.as_string())
+        else:         
+            return render_template("login.html", success="Thanks for registering!")
 
 # The route for the weekly calender
 @app.route("/calander")
@@ -102,7 +108,7 @@ def calendar():
         return redirect("/login")        
     else:
     # Some sort of thing that sends you to week view
-        return render_template("calendar.html")
+        return render_template("calendar.html", name = session["username"])
 
 # The route for if the user is logging out
 @app.route("/logout")

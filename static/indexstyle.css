@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,600;0,700;1,400&display=swap");
+
+:root {
+  --extra-light: #f3f4f6;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  height: 90;
+  background-image: url("pexels-vlada-karpovich-9969228.jpg");
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+header {
+  width: 100%;
+  padding: 0 2rem;
+}
+
+nav {
+  height: 100px;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav__logo a {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--extra-light);
+}
+
+.nav__links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav__links .link {
+  color: var(--extra-light);
+}
+
+.toggle__btn {
+  display: none;
+}
+
+.hero {
+  text-align:left;
+  color: var(--extra-light);
+}
+
+.container {
+  width: 400px;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #000000;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  color: #eee;
+}
+
+.input-container {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.todo-input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 2px solid #e6b7ec;
+  border-radius: 10px;
+  background-color: transparent;
+  color: #eee;
+}
+
+.add-button {
+  padding: 1rem;
+  border-radius: 30%;
+  background-color: #e21111;
+  border: none;
+  cursor: pointer;
+}
+
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.todos-container {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.todo {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background-color: #463c7b;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+}

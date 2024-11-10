@@ -12,7 +12,7 @@
 
 <body> 
     <div class="wrapper">
-        <form action="/login" method="Post">
+        <form action="/register" method="Post">
             <h1>Registration</h1>
             <div class="input-box">
                 <input name="usename" type="text" placeholder="Username">
@@ -28,22 +28,25 @@
                 <i class='bx bxs-lock'></i>
             </div>
 
-            {% if warning %}
+           <div class="input-box">
+                <input type="password" name="confirmation" placeholder="Confirmation">
+                <i class='bx bx-check'></i>
+                <br>
+                <br>
+                <p>Must be 8 characters</p>
+           </div>
+           <br>
+
+           {% if warning %}
                 <div class="warning">{{ warning }}</div>
                 <br>
                 <br>
             {% endif %}
 
-           <div class="input-box">
-                <input name="confirmation" name="confirmation" placeholder="Confirmnation">
-                <i class='bx bx-check'></i>
-                <p>Must be 8 character</p>
-           </div>
-
-            <button href="/" type="submit" class="btn">Register</button>
+            <button href="/register" method="post" type="submit" class="btn">Register</button>
 
             <div class="register-link">
-                <p>Have an account? <a href="#">Login</a></p>
+                <p>Have an account? <a href="/login">Login</a></p>
             </div>
         </form>
     </div>
