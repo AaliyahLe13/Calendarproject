@@ -14,9 +14,6 @@ body {
     background: url("404-background.jpg") no-repeat !important;
     background-size: cover;
     background-position: center;
-    color: white;
-    text-shadow: 2px 2px 2px black;
-    font-size: 20;
 }
 
 
@@ -161,4 +158,10 @@ h1 {
     color: white;
     font-size: 100px;
     position: relative;
+}
+
+.errorprompt .errormessage {
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 2px black;
 }
