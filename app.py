@@ -57,7 +57,9 @@ def new_user():
         user = request.form.get("usename")
         email = request.form.get("email")
         password = request.form.get("password")
-        confirmation = request.form.get("password")
+        confirmation = request.form.get("confirmation")
+        print(password)
+        print(confirmation)
         # Check username doesn't already exist
         # Check password is long enough
         if not user or not email or not password or not confirmation:
