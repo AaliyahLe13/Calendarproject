@@ -69,33 +69,33 @@ def new_user():
         if password != confirmation:
             return render_template("register.html", warning = "Password and confirmation do not match.")
         # Sends an email confirmation message formatted with HTML
-        message = MIMEMultipart("alternative")
-        message["Subject"] = "Calender - Password Confirmation"
-        message["From"] = "Some email address" # Some sort of email address for our website - make google account
-        message["To"] = request.form("email")
+       # message = MIMEMultipart("alternative")
+        #message["Subject"] = "Calender - Password Confirmation"
+        #message["From"] = "Some email address" # Some sort of email address for our website - make google account
+       # message["To"] = request.form("email")
         # Alternate text in case the HTML won't go through
-        text = """\\Here is your email confirmation link - link."""
+        #text = """\\Here is your email confirmation link - link."""
         # HTML email content
-        html = """\\
-        <html>
-          <body>
-            <p>Hi,<br>
-               Here's your email confirmation link<br>
-               <a href="#">Confirm email</a> 
-            </p>
-          </body>
-        </html>
-        """
-        plaintext = MIMEText(text, "plain")
-        html = MIMEText(html, "html")
+        #html = """\\
+        #<html>
+         # <body>
+          #  <p>Hi,<br>
+           #    Here's your email confirmation link<br>
+            #   <a href="#">Confirm email</a> 
+          #  </p>
+         # </body>
+       # </html>
+       # """
+       # plaintext = MIMEText(text, "plain")
+       # html = MIMEText(html, "html")
         # Adds message to email message that will be sent. Will try to render HTML first, then plaintext if unsuccessful
-        message.attach(plaintext)
-        message.attach(html)
+       # message.attach(plaintext)
+       # message.attach(html)
         
         # Sends email over secure connection
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=ssl.create_default_context()) as server:
-            server.login()#Our email, #The password)
-            server.sendmail()#Our email, message.email, message.as_string())
+        #with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=ssl.create_default_context()) as server:
+       #     server.login()#Our email, #The password)
+         #   server.sendmail()#Our email, message.email, message.as_string())
                 
         return render_template("login.html", success="Thanks for registering!")
 
