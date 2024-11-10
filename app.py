@@ -92,7 +92,7 @@ def new_user():
             server.login()#Our email, #The password)
             server.sendmail()#Our email, message.email, message.as_string())
                 
-        return render_template("login.html") # Some sort of success message
+        return render_template("login.html", success="Thanks for registering!")
 
 # The route for the weekly calender
 @app.route("/calander")
