@@ -13,7 +13,7 @@ PUBLIC_IP_ADDRESS = "34.71.116.70"
 DBNAME = "trial.db"
 PROJECT_ID = "Hack-K-State"
 INSTANCE_NAME = "teamrocks"
-app.config["SECRET_KEY"] = ""
+app.config["SECRET_KEY"] = "something something something something"
 app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql+mysqldb://root:{PASSWORD}@{PUBLIC_IP_ADDRESS}/{DBNAME}?unix_socket=/cloudsql/{PROJECT_ID}:{INSTANCE_NAME}"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
  
@@ -27,7 +27,7 @@ def index():
         return redirect("/login")
     if request.method == "GET":
         # TODO: Query database, send info to todo page
-        return render_template("index.html")
+        return render_template("calendar.html")
     if request.method == "POST":
         # Something
         return 404
@@ -36,6 +36,7 @@ def index():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "GET":
+        session.clear()
         return render_template("login.html")
     if request.method == "POST":
         # TODO: Check username and password
@@ -43,7 +44,7 @@ def login():
         password = request.form.get("password")
         if username and password:
             session["username"] = username
-            return render_template("index.html")
+            return redirect("/")
         else:
             return render_template("login.html", warning = "Please provide a username and password!")
 
