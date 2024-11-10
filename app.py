@@ -58,15 +58,14 @@ def new_user():
         email = request.form.get("email")
         password = request.form.get("password")
         confirmation = request.form.get("password")
-        print("We are here")
         # Check username doesn't already exist
         # Check password is long enough
         if not user or not email or not password or not confirmation:
             return render_template("register.html", warning = "Please fill out all fields.")
-        if len(password) < 9:
+        elif len(password) < 9:
             return render_template("register.html", warning = "Password must be 8 characters long.")
          # Check password and conformation are right
-        if password != confirmation:
+        elif not (password == confirmation):
             return render_template("register.html", warning = "Password and confirmation do not match.")
         # Sends an email confirmation message formatted with HTML
        # message = MIMEMultipart("alternative")
@@ -96,8 +95,8 @@ def new_user():
         #with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=ssl.create_default_context()) as server:
        #     server.login()#Our email, #The password)
          #   server.sendmail()#Our email, message.email, message.as_string())
-                
-        return render_template("login.html", success="Thanks for registering!")
+        else:         
+            return render_template("login.html", success="Thanks for registering!")
 
 # The route for the weekly calender
 @app.route("/calander")
