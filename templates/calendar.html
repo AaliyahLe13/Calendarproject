@@ -19,7 +19,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="stylecalendar.css" />
+    <link rel="stylesheet" href="{{url_for('static', filename='stylecalendar.css')}}" />
     <title>Calendar with Events</title>
   </head>
   <body>
@@ -90,6 +90,6 @@
       </button>
     </div>
 
-    <script src="scriptcalendar.js"></script>
+    <script src="{{url_for('static', filename='scriptcalendar.js')}}"></script>
   </body>
 </html>

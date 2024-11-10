@@ -13,7 +13,7 @@ PUBLIC_IP_ADDRESS = "34.71.116.70"
 DBNAME = "trial.db"
 PROJECT_ID = "Hack-K-State"
 INSTANCE_NAME = "teamrocks"
-app.config["SECRET_KEY"] = ""
+app.config["SECRET_KEY"] = "something something something something"
 app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql+mysqldb://root:{PASSWORD}@{PUBLIC_IP_ADDRESS}/{DBNAME}?unix_socket=/cloudsql/{PROJECT_ID}:{INSTANCE_NAME}"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
  
@@ -27,7 +27,7 @@ def index():
         return redirect("/login")
     if request.method == "GET":
         # TODO: Query database, send info to todo page
-        return render_template("index.html")
+        return render_template("calendar.html")
     if request.method == "POST":
         # Something
         return 404
@@ -36,6 +36,7 @@ def index():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "GET":
+        session.clear()
         return render_template("login.html")
     if request.method == "POST":
         # TODO: Check username and password
@@ -43,7 +44,7 @@ def login():
         password = request.form.get("password")
         if username and password:
             session["username"] = username
-            return render_template("index.html")
+            return redirect("/")
         else:
             return render_template("login.html", warning = "Please provide a username and password!")
 
@@ -51,15 +52,21 @@ def login():
 @app.route("/new-user", methods=["GET", "POST"])
 def new_user():
     if request.method == "GET":
-        return render_template("new-user.html")
+        return render_template("register.html")
     if request.method == "POST":
+        password = request.form.get("password")
+        confirmation = request.form.get("password")
         # Check username doesn't already exist
         # Check password is long enough
-        # Check passoword and conformation are right
+        if len(password) < 9:
+            return render_template("login.html", warning = "Password must be 8 characters long.")
+         # Check password and conformation are right
+        if password != confirmation:
+            return render_template("login.html", warning = "Password and confirmation do not match.")
         # Sends an email confirmation message formatted with HTML
         message = MIMEMultipart("alternative")
         message["Subject"] = "Calender - Password Confirmation"
-        message["From"] = "Some email address" # Some sort of email address for our website
+        message["From"] = "Some email address" # Some sort of email address for our website - make google account
         message["To"] = request.form("email")
         # Alternate text in case the HTML won't go through
         text = """\\Here is your email confirmation link - link."""
@@ -85,7 +92,7 @@ def new_user():
             server.login()#Our email, #The password)
             server.sendmail()#Our email, message.email, message.as_string())
                 
-        return render_template("login.html") # Some sort of success message
+        return render_template("login.html", success="Thanks for registering!")
 
 # The route for the weekly calender
 @app.route("/calander")
@@ -104,6 +111,6 @@ def logout():
     session.clear()
     return redirect("/login")
 
-#@app.errorhandler(404)
-#def not_found(e):
+@app.errorhandler(404)
+def not_found(e):
     return render_template('404.html'), 404
