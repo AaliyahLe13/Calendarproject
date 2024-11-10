@@ -157,14 +157,8 @@ body {
 }
 
 h1 {
-<<<<<<< HEAD
     text-shadow: 2px 2px 2px black; 
     color: white;
     font-size: 100px;
-=======
-    text-shadow: 2px 2px 2px black;
-    color: white;
-    font-size: 100pt;
->>>>>>> acbc3ca91db5c18dfed866aa2c2e1cabd4426cab
     position: relative;
 }
