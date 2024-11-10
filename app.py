@@ -40,9 +40,7 @@ def login():
     if request.method == "POST":
         # TODO: Check username and password
         username = request.form.get("usename")
-        print(username)
         password = request.form.get("password")
-        print(password)
         if username and password:
             session["username"] = username
             return render_template("index.html")
