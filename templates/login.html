@@ -11,9 +11,6 @@
 </head>
 
 <body> 
-    {% if warning %}
-        <div>{{ warning }}</div>
-    {% endif %}
     <div class="wrapper">
         <form action="/login" method="Post">
             <h1>Login</h1>
@@ -26,6 +23,10 @@
                 placeholder="Password">
                 <i class='bx bxs-lock' ></i>
             </div>
+
+            {% if warning %}
+                <div>{{ warning }}</div>
+            {% endif %}
 
             <div class="remember-forgot">
                 <label><input type="checkbox"> Remember me</label>
