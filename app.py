@@ -101,7 +101,7 @@ def new_user():
             return render_template("login.html", success="Thanks for registering!")
 
 # The route for the weekly calender
-@app.route("/calander")
+@app.route("/calendar")
 def calendar():
     # Redirects you to the login if you are not logged in 
     if "username" not in session:
