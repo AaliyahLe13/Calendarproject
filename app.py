@@ -7,6 +7,7 @@ from email.mime.multipart import MIMEMultipart
 
 app = Flask(__name__)
 
+app.secret_key = "55000348979807808087898"
 
 #Configs database
 PASSWORD ="Hello123"
