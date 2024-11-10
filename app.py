@@ -27,7 +27,7 @@ def index():
         return redirect("/login")
     if request.method == "GET":
         # TODO: Query database, send info to todo page
-        return render_template("calendar.html")
+        return render_template("index.html", name = session["username"])
     if request.method == "POST":
         # Something
         return 404
@@ -102,7 +102,7 @@ def calendar():
         return redirect("/login")        
     else:
     # Some sort of thing that sends you to week view
-        return render_template("calendar.html")
+        return render_template("calendar.html", name = session["username"])
 
 # The route for if the user is logging out
 @app.route("/logout")
