@@ -49,7 +49,7 @@ def login():
             return render_template("login.html", warning = "Please provide a username and password!")
 
 # The route for creating a new user
-@app.route("/new-user", methods=["GET", "POST"])
+@app.route("/register", methods=["GET", "POST"])
 def new_user():
     if request.method == "GET":
         return render_template("register.html")
