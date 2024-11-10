@@ -14,6 +14,9 @@ body {
     background: url("404-background.jpg") no-repeat !important;
     background-size: cover;
     background-position: center;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    font-size: 20;
 }
 
 
@@ -155,4 +158,6 @@ body {
 
 h1 {
     text-shadow: 2px 2px 2px black;
+    color: white;
+    font-size: 100pt;
 }
